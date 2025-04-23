@@ -1,0 +1,111 @@
+[gd_scene load_steps=11 format=3 uid="uid://dfdb6woruyll1"]
+
+[ext_resource type="Script" path="res://scenes/player.gd" id="1_dvj0w"]
+[ext_resource type="Texture2D" uid="uid://c33icdrc8g7ao" path="res://assets/png/gun_sprites.png" id="2_d5jb1"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_t8d8u"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_r2k31"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1nlmd"]
+atlas = ExtResource("2_d5jb1")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vmq2e"]
+atlas = ExtResource("2_d5jb1")
+region = Rect2(512, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6qab3"]
+atlas = ExtResource("2_d5jb1")
+region = Rect2(1024, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_horm3"]
+atlas = ExtResource("2_d5jb1")
+region = Rect2(1536, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wd6uo"]
+atlas = ExtResource("2_d5jb1")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o6ftk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1nlmd")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vmq2e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6qab3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_horm3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wd6uo")
+}],
+"loop": false,
+"name": &"shoot",
+"speed": 9.0
+}]
+
+[node name="Player" type="CharacterBody3D" groups=["Player"]]
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("1_dvj0w")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_t8d8u")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+current = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_r2k31")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="GunBase" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/GunBase"]
+position = Vector2(218, -114)
+scale = Vector2(0.449219, 0.449219)
+sprite_frames = SubResource("SpriteFrames_o6ftk")
+animation = &"shoot"
+autoplay = "idle"
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0.443137)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -3.0
+offset_top = -3.0
+offset_right = 3.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+target_position = Vector3(0, 0, -1000)
+collision_mask = 3

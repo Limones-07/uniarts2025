@@ -1,0 +1,111 @@
+[gd_scene load_steps=15 format=3 uid="uid://b3f2py1p8hsoq"]
+
+[ext_resource type="Texture2D" uid="uid://c5genqbpswf3g" path="res://assets/png/monster_sprites.png" id="1_jvnwp"]
+[ext_resource type="Script" path="res://scenes/enemy.gd" id="1_ruule"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_buwm2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_14kir"]
+atlas = ExtResource("1_jvnwp")
+region = Rect2(0, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_85kil"]
+atlas = ExtResource("1_jvnwp")
+region = Rect2(256, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k2myn"]
+atlas = ExtResource("1_jvnwp")
+region = Rect2(512, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b7rda"]
+atlas = ExtResource("1_jvnwp")
+region = Rect2(768, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_byj64"]
+atlas = ExtResource("1_jvnwp")
+region = Rect2(1024, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y1yn8"]
+atlas = ExtResource("1_jvnwp")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7u6dh"]
+atlas = ExtResource("1_jvnwp")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c7oq3"]
+atlas = ExtResource("1_jvnwp")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sap27"]
+atlas = ExtResource("1_jvnwp")
+region = Rect2(512, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f2s0s"]
+atlas = ExtResource("1_jvnwp")
+region = Rect2(768, 0, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_luex8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_14kir")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_85kil")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k2myn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b7rda")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_byj64")
+}],
+"loop": false,
+"name": &"die",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y1yn8")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7u6dh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c7oq3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sap27")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f2s0s")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[node name="Enemy" type="CharacterBody3D"]
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("1_ruule")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_buwm2")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 1, 0)
+billboard = 1
+sprite_frames = SubResource("SpriteFrames_luex8")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.835252
