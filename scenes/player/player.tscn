@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://dfdb6woruyll1"]
 
-[ext_resource type="Script" path="res://scenes/player.gd" id="1_dvj0w"]
+[ext_resource type="Script" uid="uid://dse4m2cropdiu" path="res://scenes/player/player.gd" id="1_dvj0w"]
 [ext_resource type="Texture2D" uid="uid://c33icdrc8g7ao" path="res://assets/png/gun_sprites.png" id="2_d5jb1"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_t8d8u"]

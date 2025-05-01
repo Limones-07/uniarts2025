@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://w0b7h1i1na7b"]
 
-[ext_resource type="PackedScene" uid="uid://dfdb6woruyll1" path="res://scenes/player.tscn" id="1_6s0di"]
-[ext_resource type="PackedScene" uid="uid://b3f2py1p8hsoq" path="res://scenes/enemy.tscn" id="2_jawh4"]
+[ext_resource type="PackedScene" uid="uid://dfdb6woruyll1" path="res://scenes/player/player.tscn" id="1_6s0di"]
+[ext_resource type="PackedScene" uid="uid://b3f2py1p8hsoq" path="res://scenes/enemy/enemy.tscn" id="2_jawh4"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fgb86"]
 albedo_color = Color(0.515934, 0, 0.0657036, 1)
