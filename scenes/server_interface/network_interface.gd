@@ -3,8 +3,8 @@
 
 extends Node
 
-const DEFAULT_IP := "127.0.0.1"
-const DEFAULT_PORT := 35565
+const DEFAULT_IP: String = "127.0.0.1"
+const DEFAULT_PORT: int = 35565
 var _peer: ENetMultiplayerPeer
 
 @onready var _server_interface := self.get_parent() as Node
@@ -20,7 +20,7 @@ func _log(msg: String) -> void:
 
 func _interface_init(ip := DEFAULT_IP, port := DEFAULT_PORT) -> void:
 	_peer = ENetMultiplayerPeer.new()
-	var error = _peer.create_client(ip, port)
+	var error: Error = _peer.create_client(ip, port)
 	if not error:
 		# Everything is alright
 		multiplayer.multiplayer_peer = _peer
