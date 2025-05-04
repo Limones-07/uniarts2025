@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://w0b7h1i1na7b"]
+[gd_scene load_steps=10 format=3 uid="uid://w0b7h1i1na7b"]
 
 [ext_resource type="PackedScene" uid="uid://dfdb6woruyll1" path="res://scenes/player/player.tscn" id="1_6s0di"]
 [ext_resource type="PackedScene" uid="uid://b3f2py1p8hsoq" path="res://scenes/enemy/enemy.tscn" id="2_jawh4"]
+[ext_resource type="PackedScene" uid="uid://dyut3rxethekj" path="res://scenes/server_testing_scene/server_testing_scene.tscn" id="3_sugp2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fgb86"]
 albedo_color = Color(0.515934, 0, 0.0657036, 1)
@@ -151,3 +152,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.9873, 0, 4.72381)
 
 [node name="Enemy6" parent="Enemies" instance=ExtResource("2_jawh4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.9964, 0, -10.5645)
+
+[node name="ServerTestingScene" parent="." instance=ExtResource("3_sugp2")]
