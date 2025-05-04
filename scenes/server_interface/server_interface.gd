@@ -12,12 +12,6 @@ extends Node
 # These are the signals that the client can emit in order
 # to talk to the server.
 
-## Initializes the Interface by connecting to an existing server.
-## By default, connects to 127.0.0.1:35565/UDP. If the server isn't
-## internal, server_ip must be specified, but the server's port is probably
-## 35565/UDP (default), so you don't need to specify it in most cases.
-signal init(server_ip: String, server_port: int)
-
 ## Spawns a server on this game instance. If an internal server already exists,
 ## it'll destroy the existing one and spawn another one.
 ## Should be connected to by the local client using init().
@@ -26,6 +20,15 @@ signal spawn_server(port: int)
 
 ## Destroys the server for whatever reason you wanted. 
 signal destroy_server
+
+## Initializes the Interface by connecting to an existing server.
+## By default, connects to 127.0.0.1:35565/UDP. If the server isn't
+## internal, server_ip must be specified, but the server's port is probably
+## 35565/UDP (default), so you don't need to specify it in most cases.
+signal init(server_ip: String, server_port: int)
+
+## Disconnects from the server. If it isn't connected, do nothing.
+signal server_disconnect
 
 # #=-=-=-=-=-=-=-=-=-=-=-=#
 # #-= Reporting signals =-#

@@ -26,6 +26,7 @@ func init(PORT: int) -> void:
 	multiplayer.multiplayer_peer = enet_peer
 	
 	multiplayer.peer_connected.connect(_new_connection)
+	multiplayer.peer_disconnected.connect(_on_peer_disconnect)
 	_log("Initialized with peer id %s!" % multiplayer.get_unique_id())
 
 func _try_create_server(PORT: int, try: int) -> int:
@@ -62,4 +63,6 @@ func _new_connection(id: int) -> void:
 		peer.get_remote_address(),
 		peer.get_remote_port(),
 	])
-	
+
+func _on_peer_disconnect(id: int) -> void:
+	_log("Peer %s disconnected! Cya, %s! o/" % [id, id])

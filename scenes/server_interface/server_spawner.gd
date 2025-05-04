@@ -20,7 +20,7 @@ func _log(msg: String) -> void:
 	print("[ServerInterface/ServerSpawner] %s" % msg)
 
 func _spawn_server(port: int = DEFAULT_PORT) -> void:
-	if is_instance_valid(_server_instance):
+	if _server_instance != null and is_instance_valid(_server_instance):
 		_log("Restarting the existing server...")
 		_server_interface.destroy_server.emit()
 		await _server_interface.server_destroyed
@@ -47,4 +47,5 @@ func _on_last_scream() -> void:
 
 func _on_server_destroyed() -> void:
 	_log("The internal server was succesfully destroyed.")
+	_server_instance = null
 	_server_interface.server_destroyed.emit()

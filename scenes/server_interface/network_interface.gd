@@ -10,6 +10,7 @@ var _peer: ENetMultiplayerPeer
 @onready var _server_interface := self.get_parent() as Node
 func _ready():
 	_server_interface.init.connect(_interface_init)
+	_server_interface.server_disconnect.connect(_disconnect)
 	multiplayer.connected_to_server.connect(_on_connected_to_server)
 	multiplayer.connection_failed.connect(_on_connection_failed)
 	multiplayer.server_disconnected.connect(_on_server_disconnected)
@@ -34,6 +35,10 @@ func _interface_init(ip := DEFAULT_IP, port := DEFAULT_PORT) -> void:
 		_log("ERROR: Failed to create the client peer, " + 
 				"try again (probably an OS mess up).")
 	_server_interface.err_create_client.emit()
+
+func _disconnect() -> void:
+	_log("Disconnecting from the server...")
+	multiplayer.disconnect_peer(1)
 
 func _on_connected_to_server() -> void:
 	_log("Successfully connected to the server!")
