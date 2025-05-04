@@ -4,6 +4,7 @@
 
 extends Node
 
+@warning_ignore_start("unused_signal")
 # #=-=-=-=-=-=-=-=-=#
 # #-= API signals =-#
 # #=-=-=-=-=-=-=-=-=#
@@ -22,6 +23,9 @@ signal init(server_ip: String, server_port: int)
 ## By default, uses the port 35565/UDP, but another port can be specified.
 signal spawn_server(port: int)
 
+## Destroys the server for whatever reason you wanted. 
+signal destroy_server
+
 # #=-=-=-=-=-=-=-=-=-=-=-=#
 # #-= Reporting signals =-#
 # #=-=-=-=-=-=-=-=-=-=-=-=#
@@ -30,19 +34,31 @@ signal spawn_server(port: int)
 # These are the signals that the client should connect to in order
 # to receive the server's response.
 
+## The internal server is ready.
+signal server_ready
+
+## The internal server got queued to be freed. 
+## Be ready for the iminent server's destruction.
+signal server_destroying
+
+## There is no more internal server. It's gone, poof.
+signal server_destroyed
+
+## Something went really wrong on the creation of the client, emit init() again.
+signal err_create_client
+
 ## Successfully connected to the server.
 signal connected_to_server
 
-## Failed to connect to the server (deal with it, client).
+## Failed to connect to the server, you should emit init() again. 
+## If the connection to 127.0.0.1 failed, it's probably a server problem, you
+## should emit destroy_server() and redo everything.
 signal connection_failed
 
 ## Disconnected from the server.
 ## If this signal was emmited, you should emit init() again.
 signal server_disconnected
-
-## Something went really wrong on the creation of the client, emit init() again.
-signal err_create_client
-
+@warning_ignore_restore("unused_signal")
 
 func _ready() -> void:
 	print("[ServerInterface] Ready!")

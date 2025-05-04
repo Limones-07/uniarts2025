@@ -19,11 +19,13 @@ func _log(msg: String) -> void:
 	print("[ServerInterface/NetworkInterface] %s" % msg)
 
 func _interface_init(ip := DEFAULT_IP, port := DEFAULT_PORT) -> void:
+	_log("Initializing connection to server on %s:%s..." % [ip, port])
 	_peer = ENetMultiplayerPeer.new()
 	var error: Error = _peer.create_client(ip, port)
 	if not error:
 		# Everything is alright
 		multiplayer.multiplayer_peer = _peer
+		_log("Interface successfully initialized!")
 		return
 	# Something went wrong...
 	if error == ERR_ALREADY_IN_USE:

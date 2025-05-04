@@ -7,10 +7,13 @@ extends Node
 
 const DEFAULT_PORT: int = 35565
 
+var _server_instance: Node
+
 @onready var _server_interface := self.get_parent() as Node
 
 func _ready() -> void:
 	_server_interface.spawn_server.connect(_spawn_server)
+	_server_interface.destroy_server.connect(_destroy_server)
 	_log("Ready!")
 
 func _log(msg: String) -> void:
@@ -19,7 +22,25 @@ func _log(msg: String) -> void:
 func _spawn_server(port := DEFAULT_PORT) -> void:
 	_log("Spawning server with listener port %s..." % port)
 	var server_scene: PackedScene = load("res://scenes/server/server.tscn")
-	var server_instance: Node = server_scene.instantiate()
-	server_instance.PORT = port
-	_server_interface.add_child(server_instance)
+	_server_instance = server_scene.instantiate() as Node
+	_server_instance.port = port
+	_server_instance.ready.connect(
+		func(): _server_interface.server_ready.emit()
+	)
+	_server_instance.last_scream.connect(_on_last_scream)
+	_server_instance.tree_exited.connect(_on_server_destroyed)
+	_server_interface.add_child(_server_instance)
 	_log("Server spawned!")
+
+func _destroy_server() -> void:
+	_server_instance.queue_free()
+	_log("Queued the internal server destruction.")
+	_server_interface.server_destroying.emit()
+
+func _on_last_scream() -> void:
+	_log("CRITICAL: The server panicked and is destroying itself.")
+	_server_interface.server_destroying.emit()
+
+func _on_server_destroyed() -> void:
+	_log("The internal server was succesfully destroyed.")
+	_server_interface.server_destroyed.emit()
