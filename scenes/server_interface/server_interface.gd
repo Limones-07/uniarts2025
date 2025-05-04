@@ -18,7 +18,8 @@ extends Node
 ## 35565/UDP (default), so you don't need to specify it in most cases.
 signal init(server_ip: String, server_port: int)
 
-## Spawns a server on this game instance.
+## Spawns a server on this game instance. If an internal server already exists,
+## it'll destroy the existing one and spawn another one.
 ## Should be connected to by the local client using init().
 ## By default, uses the port 35565/UDP, but another port can be specified.
 signal spawn_server(port: int)

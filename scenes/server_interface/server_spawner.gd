@@ -19,7 +19,11 @@ func _ready() -> void:
 func _log(msg: String) -> void:
 	print("[ServerInterface/ServerSpawner] %s" % msg)
 
-func _spawn_server(port := DEFAULT_PORT) -> void:
+func _spawn_server(port: int = DEFAULT_PORT) -> void:
+	if is_instance_valid(_server_instance):
+		_log("Restarting the existing server...")
+		_server_interface.destroy_server.emit()
+		await _server_interface.server_destroyed
 	_log("Spawning server with listener port %s..." % port)
 	var server_scene: PackedScene = load("res://scenes/server/server.tscn")
 	_server_instance = server_scene.instantiate() as Node
