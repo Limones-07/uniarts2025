@@ -27,7 +27,19 @@ func init(PORT: int) -> void:
 	
 	multiplayer.peer_connected.connect(_new_connection)
 	multiplayer.peer_disconnected.connect(_on_peer_disconnect)
+	multiplayer.peer_packet.connect(_on_receive_packet)
 	_log("Initialized with peer id %s!" % multiplayer.get_unique_id())
+
+func _on_receive_packet(_id: int, net_packet: PackedByteArray) -> void:
+	_log("Received packet!")
+	var json_packet: String = net_packet.get_string_from_utf8()
+	var packet: Dictionary = JSON.parse_string(json_packet)
+	_log("Packet: %s" % packet)
+
+func _send_packet(id: int, packet: Dictionary) -> void:
+	var json_packet: String = JSON.stringify(packet)
+	var net_packet: PackedByteArray = json_packet.to_utf8_buffer()
+	multiplayer.send_bytes(net_packet, id, enet_peer.TRANSFER_MODE_RELIABLE)
 
 func _try_create_server(PORT: int, try: int) -> int:
 	enet_peer = ENetMultiplayerPeer.new()

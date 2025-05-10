@@ -25,6 +25,7 @@ func _interface_init(ip := DEFAULT_IP, port := DEFAULT_PORT) -> void:
 	if not error:
 		# Everything is alright
 		multiplayer.multiplayer_peer = _peer
+		multiplayer.peer_packet.connect(_on_receive_packet)
 		_log("Interface successfully initialized!")
 		return
 	# Something went wrong...
@@ -38,6 +39,21 @@ func _interface_init(ip := DEFAULT_IP, port := DEFAULT_PORT) -> void:
 func _disconnect() -> void:
 	_log("Disconnecting from the server...")
 	multiplayer.disconnect_peer(1)
+
+func _send_packet(
+		json_packet: String, 
+		transfer_mode: MultiplayerPeer.TransferMode = _peer.TRANSFER_MODE_UNRELIABLE_ORDERED) -> void:
+	var net_packet: PackedByteArray = json_packet.to_utf8_buffer()
+	multiplayer.send_bytes(
+			net_packet, 
+			_peer.TARGET_PEER_SERVER,
+			transfer_mode)
+
+func _on_receive_packet(_id: int, net_packet: PackedByteArray) -> void:
+	_log("Received packet!")
+	var json_packet: String = net_packet.get_string_from_utf8()
+	var packet: Dictionary = JSON.parse_string(json_packet)
+	_log("Packet: %s" % packet)
 
 func _on_connected_to_server() -> void:
 	_log("Successfully connected to the server!")

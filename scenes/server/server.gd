@@ -7,6 +7,9 @@ extends Node
 ## A critical error happened and we cannot proceed. 
 signal last_scream
 
+## The network interface received a packet. Deal with it.
+signal received_packet(packet: Dictionary)
+
 var port: int
 
 @onready var _network_interface = $NetworkInterface
@@ -14,6 +17,7 @@ var port: int
 func _ready() -> void:
 	# This line looks like getting ready to unalive lol
 	last_scream.connect(_last_scream) 
+	received_packet.connect(_on_receive_packet)
 	_setup_multiplayer_api()
 	await _network_interface.init(port)
 	_log("Ready!")
@@ -36,3 +40,6 @@ func _setup_multiplayer_api() -> void:
 	var self_path = self.get_path()
 	self.get_tree().set_multiplayer(scene_multiplayer, self_path)
 	_log("Set new MultiplayerAPI for server's node at %s!" % self_path)
+
+func _on_receive_packet(packet: Dictionary) -> void:
+	_log("Received packet: %s" % packet)
