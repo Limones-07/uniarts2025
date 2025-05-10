@@ -7,10 +7,9 @@ const DEFAULT_IP: String = "127.0.0.1"
 const DEFAULT_PORT: int = 35565
 var _peer: ENetMultiplayerPeer
 
-@onready var _server_interface := self.get_parent() as Node
 func _ready():
-	_server_interface.init.connect(_interface_init)
-	_server_interface.server_disconnect.connect(_disconnect)
+	ServerInterface.init.connect(_interface_init)
+	ServerInterface.server_disconnect.connect(_disconnect)
 	multiplayer.connected_to_server.connect(_on_connected_to_server)
 	multiplayer.connection_failed.connect(_on_connection_failed)
 	multiplayer.server_disconnected.connect(_on_server_disconnected)
@@ -34,7 +33,7 @@ func _interface_init(ip := DEFAULT_IP, port := DEFAULT_PORT) -> void:
 	elif error == ERR_CANT_CREATE:
 		_log("ERROR: Failed to create the client peer, " + 
 				"try again (probably an OS mess up).")
-	_server_interface.err_create_client.emit()
+	ServerInterface.err_create_client.emit()
 
 func _disconnect() -> void:
 	_log("Disconnecting from the server...")
@@ -42,12 +41,12 @@ func _disconnect() -> void:
 
 func _on_connected_to_server() -> void:
 	_log("Successfully connected to the server!")
-	_server_interface.connected_to_server.emit()
+	ServerInterface.connected_to_server.emit()
 
 func _on_connection_failed() -> void:
 	_log("Connection to the server failed.")
-	_server_interface.connection_failed.emit()
+	ServerInterface.connection_failed.emit()
 
 func _on_server_disconnected() -> void:
 	_log("Disconnected from the server.")
-	_server_interface.server_disconnected.emit()
+	ServerInterface.server_disconnected.emit()
