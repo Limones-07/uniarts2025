@@ -64,5 +64,16 @@ signal connection_failed
 signal server_disconnected
 @warning_ignore_restore("unused_signal")
 
+const DEBUG: bool = true
+var server_interface: PackedScene = preload("res://scenes/server_interface/server_interface.tscn")
+
+func _enter_tree() -> void:
+	var si_instance: Node = server_interface.instantiate()
+	self.add_child(si_instance)
+
 func _ready() -> void:
 	print("[ServerInterface] Ready!")
+	if DEBUG:
+		var sts: PackedScene = preload("res://scenes/server_testing_scene/server_testing_scene.tscn")
+		var sts_instance: Node = sts.instantiate()
+		self.add_child(sts_instance)

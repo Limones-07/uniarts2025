@@ -3,7 +3,7 @@
 
 extends Node
 
-@onready var _server_interface = $ServerInterface
+@onready var _server_interface = ServerInterface
 
 func _ready() -> void:
 	_log("Starting testing sequence. Good luck!\n")
