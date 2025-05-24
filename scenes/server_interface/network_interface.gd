@@ -52,8 +52,7 @@ func _send_packet(
 func _on_receive_packet(_id: int, net_packet: PackedByteArray) -> void:
 	_log("Received packet!")
 	var json_packet: String = net_packet.get_string_from_utf8()
-	var packet: Dictionary = JSON.parse_string(json_packet)
-	_log("Packet: %s" % packet)
+	_log("Packet: %s" % json_packet)
 
 func _on_connected_to_server() -> void:
 	_log("Successfully connected to the server!")

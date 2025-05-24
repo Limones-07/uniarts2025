@@ -1,18 +1,22 @@
 
 ## Handles all the game logic
 
+class_name Server
 extends Node
 
 ## The server's last scream to it's summoner... we're gone now.
 ## A critical error happened and we cannot proceed. 
 signal last_scream
 
+## Sends a packet to the peer `id` based on PacketBuilder
+signal send_packet(packet_builder: PacketBuilder, id: int)
+
 ## The network interface received a packet. Deal with it.
 signal received_packet(packet: Dictionary)
 
 var port: int
 
-@onready var _network_interface = $NetworkInterface
+@onready var _network_interface: ServerNetworkInterface = $NetworkInterface
 
 func _ready() -> void:
 	# This line looks like getting ready to unalive lol
