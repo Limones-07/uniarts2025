@@ -51,7 +51,7 @@ func json_export(ident: bool = false) -> String:
 
 func _init(packet_type: PacketTypes) -> void:
 	if packet_type == PacketTypes.SYNC:
-		self._packet.type = "sync"
+		self._packet.type = "SYNC"
 		self._packet.attribute_set = SyncAttribute
 	else:
 		assert(false, "Invalid packet type received")

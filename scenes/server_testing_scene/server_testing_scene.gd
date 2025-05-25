@@ -3,8 +3,8 @@
 
 extends Node
 
-const CONNECTION_TEST: bool = false
-const COMMUNICATION_TEST: bool = true
+@export var CONNECTION_TEST: bool = false
+@export var COMMUNICATION_TEST: bool = true
 
 func _ready() -> void:
 	_log("Starting testing sequence. Good luck!\n")
@@ -40,7 +40,7 @@ func _test_send_packet(json_packet: String) -> void:
 	ServerInterface.init.emit()
 	await _wait()
 	_log("Sending the packet: %s" % json_packet)
-	var ni: Node = ServerInterface.get_node("/root/ServerInterface/ServerInterfaceBundle/NetworkInterface")
+	var ni: Node = ServerInterface.get_node("/root/ServerInterface/NetworkInterface")
 	ni._send_packet(json_packet)
 	await _wait()
 	_log("Destroying the server...")
