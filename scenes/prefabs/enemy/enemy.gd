@@ -5,7 +5,7 @@ extends CharacterBody3D
 @onready var sprite = $AnimatedSprite3D
 var dead = false
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if dead:
 		return
 	if player == null:

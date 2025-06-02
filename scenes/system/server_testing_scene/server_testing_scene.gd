@@ -5,21 +5,25 @@ extends Node
 
 @onready var _server_interface = ServerInterface
 
-func _ready() -> void:
-	_log("Starting testing sequence. Good luck!\n")
-	await _test_defaults()
-	_log("\n")
-	await _test_defaults_2()
-	_log("\n")
-	await _test_localhost()
-	_log("\n")
-	await _test_different_port()
-	_log("\n")
-	await _test_non_defaults()
-	_log("\n")
-	await _test_disconnect_and_restart()
-	_log("\n")
-	_log("Testing complete!")
+# OBS: Please only use when testing the server. Leaving this functional by default
+# greatly impacts the development cycle, as it automatically changes scenes in the middle
+# of testing sequences.
+
+#func _ready() -> void:
+	#_log("Starting testing sequence. Good luck!\n")
+	#await _test_defaults()
+	#_log("\n")
+	#await _test_defaults_2()
+	#_log("\n")
+	#await _test_localhost()
+	#_log("\n")
+	#await _test_different_port()
+	#_log("\n")
+	#await _test_non_defaults()
+	#_log("\n")
+	#await _test_disconnect_and_restart()
+	#_log("\n")
+	#_log("Testing complete!")
 
 func _test_defaults() -> void:
 	_log("Spawning server with default value (port 35565)...")

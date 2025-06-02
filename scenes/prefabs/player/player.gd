@@ -14,7 +14,7 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		rotation_degrees.y -= event.relative.x * MOUSE_SENSITIVITY
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("escape"):
 		get_tree().quit()
 	if Input.is_action_just_pressed("restart"):
@@ -25,7 +25,7 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("right_click"):
 		shoot()
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	var input_dir := Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
