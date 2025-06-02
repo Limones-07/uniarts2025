@@ -23,7 +23,7 @@ func _spawn_server(port: int = DEFAULT_PORT) -> void:
 		ServerInterface.destroy_server.emit()
 		await ServerInterface.server_destroyed
 	_log("Spawning server with listener port %s..." % port)
-	var server_scene: PackedScene = load("res://scenes/server/server.tscn")
+	var server_scene: PackedScene = load("res://scenes/system/server/server.tscn")
 	_server_instance = server_scene.instantiate() as Node
 	_server_instance.port = port
 	_server_instance.ready.connect(

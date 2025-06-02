@@ -41,7 +41,7 @@ func _test_defaults_2() -> void:
 	_server_interface.init.emit()
 	await _wait()
 	_log("Reloading the main scene...")
-	self.get_tree().change_scene_to_file("res://scenes/main.tscn")
+	self.get_tree().change_scene_to_file("res://scenes/environments/main.tscn")
 	_log("Waiting 10 seconds...")
 	await _wait(10)
 	_log("Destroying the server...")

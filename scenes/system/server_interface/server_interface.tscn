@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dqak3unls55il"]
 
-[ext_resource type="Script" uid="uid://ch7ee6tbihy0d" path="res://scenes/server_interface/network_interface.gd" id="2_c22ye"]
-[ext_resource type="Script" uid="uid://o76x5iw4tfap" path="res://scenes/server_interface/server_spawner.gd" id="3_3rbla"]
+[ext_resource type="Script" uid="uid://ch7ee6tbihy0d" path="res://scenes/system/server_interface/network_interface.gd" id="2_c22ye"]
+[ext_resource type="Script" uid="uid://o76x5iw4tfap" path="res://scenes/system/server_interface/server_spawner.gd" id="3_3rbla"]
 
 [node name="ServerInterfaceBundle" type="Node"]
 

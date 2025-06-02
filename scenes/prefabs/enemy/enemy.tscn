@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://b3f2py1p8hsoq"]
 
 [ext_resource type="Texture2D" uid="uid://c5genqbpswf3g" path="res://assets/png/monster_sprites.png" id="1_jvnwp"]
-[ext_resource type="Script" uid="uid://0ajb47qix1b8" path="res://scenes/enemy/enemy.gd" id="1_ruule"]
+[ext_resource type="Script" uid="uid://0ajb47qix1b8" path="res://scenes/prefabs/enemy/enemy.gd" id="1_ruule"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_buwm2"]
 
