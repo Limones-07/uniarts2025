@@ -1,4 +1,5 @@
 _Defines everything related to the client-server communication... this line didn't help much, did it?_
+
 Packets
 =======
 
@@ -27,7 +28,7 @@ To build a packet correctly, the PacketBuilder (custom class implemented on `./s
 Errors parsing any of the non-optional attributes _must_ be treated as critical errors and disconnect the client.
 
 Depending on the game's needs, more attributes can be added to each packet in the future.
-##### VARIANCE packet specification
+#### VARIANCE packet specification
 (For now, only used for the player's movement.)
 
 - `"type": String` - Always set to "VARIANCE".
@@ -41,7 +42,7 @@ Example packet:
 }
 ```
 
-##### REQUEST packet specification
+#### REQUEST packet specification
 - `"type": String` - Always set to "REQUEST".
 - `"id": String (optional)` - Can be specified to help the client define which RESPONSE is for which REQUEST, as it will be copied in the RESPONSE packet (see RESPONSE."id").
 - `"object_id": String` - Specifies on which level object the request method is defined. It's copied in the RESPONSE packet to help identification (see RESPONSE."object_id").
@@ -63,7 +64,7 @@ Example packet:
 }
 ```
 
-##### TICK packet specification
+#### TICK packet specification
 - `"type": String` - Always set to "TICK".
 - `"player_positions": Object` - Contains the positions of all players inside the player's level, including of themselves, being the keys the players' names and the values their positions.
 - `"entity_positions": Object` - Contains the positions of all movable entities inside the player's level, being the keys the entities' object ids and the values their positions.
@@ -113,7 +114,7 @@ Example packet:
 }
 ```
 
-##### RESPONSE packet specification
+#### RESPONSE packet specification
 - `"type": String` - Always set to "RESPONSE".
 - `"id": String (optional)` - Contains the specified id in the original REQUEST (a literal copy).
 - `"object_id": String` - Specifies on which level object the response method is defined.
@@ -139,7 +140,7 @@ Example packet:
 }
 ```
 
-##### SYNC packet specification
+#### SYNC packet specification
 - `"type": String` - Always set to "SYNC".
 - `"players": Array` - Contains the names of all players on this level.
 - `"level": String` - Contains which level should be loaded (e.g. if the value is "classroom", the level's path is `./scenes/levels/classroom/level.tscn`). 
