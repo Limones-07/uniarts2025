@@ -18,7 +18,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-ServerInterface="*res://scenes/system/server_interface/server_interface.gd"
+ServerInterface="*res://scenes/system/server_interface/server_interface.tscn"
 
 [display]
 

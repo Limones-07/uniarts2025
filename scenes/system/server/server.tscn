@@ -1,10 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://b2y4f1i5vogky"]
+[gd_scene load_steps=5 format=3 uid="uid://b2y4f1i5vogky"]
 
 [ext_resource type="Script" uid="uid://jj1nur03h85g" path="res://scenes/system/server/server.gd" id="1_fp0pw"]
 [ext_resource type="Script" uid="uid://bqin2e0qecx51" path="res://scenes/system/server/network_interface.gd" id="2_375b0"]
+[ext_resource type="Script" path="res://scenes/system/server/player_controller.gd" id="3_2t17j"]
+[ext_resource type="Script" path="res://scenes/system/server/level_manager.gd" id="4_jqkn5"]
 
 [node name="Server" type="Node"]
 script = ExtResource("1_fp0pw")
 
 [node name="NetworkInterface" type="Node" parent="."]
 script = ExtResource("2_375b0")
+
+[node name="PlayerController" type="Node" parent="."]
+script = ExtResource("3_2t17j")
+
+[node name="LevelManager" type="Node" parent="."]
+script = ExtResource("4_jqkn5")

@@ -7,7 +7,7 @@ extends Node
 
 const DEFAULT_PORT: int = 35565
 
-var _server_instance: Node
+var _server_instance: Server
 
 func _ready() -> void:
 	ServerInterface.spawn_server.connect(_spawn_server)
@@ -24,7 +24,7 @@ func _spawn_server(port: int = DEFAULT_PORT) -> void:
 		await ServerInterface.server_destroyed
 	_log("Spawning server with listener port %s..." % port)
 	var server_scene: PackedScene = load("res://scenes/system/server/server.tscn")
-	_server_instance = server_scene.instantiate() as Node
+	_server_instance = server_scene.instantiate() as Server
 	_server_instance.port = port
 	_server_instance.ready.connect(
 		func(): ServerInterface.server_ready.emit()

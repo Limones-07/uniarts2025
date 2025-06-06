@@ -1,15 +1,17 @@
 
 ## Handles the clients' connection and network communication.
 
+class_name ServerNetworkInterface
 extends Node
 
-const MAX_CLIENTS: int = 4
+# We're letting PlayerController kick the excess gracefully
+const MAX_CLIENTS: int = 8 
 const RETRY_TIME: float = 1.0
 const INIT_RETRIES: int = 3
 
 var enet_peer: ENetMultiplayerPeer
 
-@onready var _server = self.get_parent()
+@onready var _server: Server = self.get_parent()
 
 func _ready() -> void:
 	_log("Ready!")
@@ -25,9 +27,21 @@ func init(PORT: int) -> void:
 			return
 	multiplayer.multiplayer_peer = enet_peer
 	
+	_server.send_packet.connect(_send_packet)
 	multiplayer.peer_connected.connect(_new_connection)
 	multiplayer.peer_disconnected.connect(_on_peer_disconnect)
+	multiplayer.peer_packet.connect(_on_receive_packet)
 	_log("Initialized with peer id %s!" % multiplayer.get_unique_id())
+
+func _send_packet(packet_builder: PacketBuilder, id: int) -> void:
+	var json_packet: String = packet_builder.json_export()
+	var net_packet: PackedByteArray = json_packet.to_utf8_buffer()
+	multiplayer.send_bytes(net_packet, id, enet_peer.TRANSFER_MODE_RELIABLE)
+
+func _on_receive_packet(_id: int, net_packet: PackedByteArray) -> void:
+	_log("Received packet!")
+	var json_packet: String = net_packet.get_string_from_utf8()
+	_log("Packet: %s" % json_packet)
 
 func _try_create_server(PORT: int, try: int) -> int:
 	enet_peer = ENetMultiplayerPeer.new()
