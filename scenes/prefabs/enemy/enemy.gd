@@ -9,7 +9,7 @@ func _physics_process(_delta: float) -> void:
 	if dead:
 		return
 	if player == null:
-		return
+		player = get_tree().get_first_node_in_group("Player")
 	
 	var dir = player.global_position - global_position
 	dir.y = 0.0

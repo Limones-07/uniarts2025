@@ -59,7 +59,7 @@ Example packet:
   "object_id": "dante",
   "request": "talking_response",
   "parameters": {
-    "option_index": 2
+	"option_index": 2
   }
 }
 ```
@@ -76,40 +76,40 @@ Example packet:
   "type": "TICK",
   
   "player_positions": {
-    "lmnss": [ 123.65, 98.07 ],
-    "ohyearsonist": [ 47.32, 203.0 ],
-    "adeeme._": [ 82.5, 90.1 ]
+	"lmnss": [ 123.65, 98.07 ],
+	"ohyearsonist": [ 47.32, 203.0 ],
+	"adeeme._": [ 82.5, 90.1 ]
   },
   
   "entity_positions": {
-    "dante": [ 40.2, 200.0 ],
-    "panther1": [ 120.0, 95.0 ],
-    "panther2": [ 129.0, 100.0 ]
+	"dante": [ 40.2, 200.0 ],
+	"panther1": [ 120.0, 95.0 ],
+	"panther2": [ 129.0, 100.0 ]
   },
   
   "level_calls": {
-    "add_entities": [
-      {
-	    "id": "panther5".
-	    "scene_path": "res://scenes/enemies/panther.tscn"
-	    "position": [ 0.0, 0.0 ]
-      },
-      {
-        "id": "panther6".
-	    "scene_path": "res://scenes/enemies/panther.tscn"
-	    "position": [ 0.0, 0.0 ]
-      }
-    ],
-    "remove_entities": [
-      "panther3",
-      "panther4"
-    ],
-    "object_calls": [
-      {
-        "object_id": "dante",
-        "method": "crouch"
-      }
-    ]
+	"add_entities": [
+	  {
+		"id": "panther5".
+		"scene_path": "res://scenes/enemies/panther.tscn"
+		"position": [ 0.0, 0.0 ]
+	  },
+	  {
+		"id": "panther6".
+		"scene_path": "res://scenes/enemies/panther.tscn"
+		"position": [ 0.0, 0.0 ]
+	  }
+	],
+	"remove_entities": [
+	  "panther3",
+	  "panther4"
+	],
+	"object_calls": [
+	  {
+		"object_id": "dante",
+		"method": "crouch"
+	  }
+	]
   }
 }
 ```
@@ -129,13 +129,13 @@ Example packet:
   "object_id": "dante",
   "response": "open_dialog",
   "parameters": {
-    "text": "Thanks for helping me! Would you let me join you in your journey?",
-    "options": [
-      "Yes, of course!",
-      "Yes... I guess...",
-      "I'm sorry, but... I need to go alone... I think?",
-      "You would only get in my way, as you are doing now."
-    ]
+	"text": "Thanks for helping me! Would you let me join you in your journey?",
+	"options": [
+	  "Yes, of course!",
+	  "Yes... I guess...",
+	  "I'm sorry, but... I need to go alone... I think?",
+	  "You would only get in my way, as you are doing now."
+	]
   }
 }
 ```
@@ -143,7 +143,7 @@ Example packet:
 #### SYNC packet specification
 - `"type": String` - Always set to "SYNC".
 - `"players": Array` - Contains the names of all players on this level.
-- `"level": String` - Contains which level should be loaded (e.g. if the value is "classroom", the level's path is `./scenes/levels/classroom/level.tscn`). 
+- `"level": String` - Contains which level should be loaded (e.g. if the value is "classroom", the level's path is `./scenes/environments/classroom/level.tscn`). 
 - `"level_instance_data": String` - Contains a JSON string with all the data necessary to bake the level. It should be passed directly to LevelBaker.
 - `"level_setup_calls": Object` - Contains calls to methods in the level's global scope (see TICK."level_calls").
 
@@ -153,18 +153,17 @@ Example packet:
   "type": "SYNC",
   // "error": "Room is full!",
   "players": [
-    "lmnss",
-    "ohyearsonist",
-    "adeeme._"
+	"lmnss",
+	"ohyearsonist",
+	"adeeme._"
   ],
   
   "level": "classroom",
   "level_instance_data": "{ ... }",
   "level_setup_calls": {
-    "add_entities": [ ... ],
-    "object_calls": [ ... ]
-    // ...
+	"add_entities": [ ... ],
+	"object_calls": [ ... ]
+	// ...
   }
 }
 ```
-
