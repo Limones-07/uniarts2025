@@ -55,4 +55,26 @@ _Do not nest placeholders or placeholder groups as the game's behaviour on this 
 LevelInteractable3D
 ===================
 
-(...)
+This is what makes levels alive. A LevelInteractable3D contains the possible REQUESTs the client can make and RESPONSEs the object can execute. When the player gets close to one, they can poll the object using `LevelInteractable3D.poll()`, which returns all possible REQUESTs as a JSON array with the following structure:
+
+```
+[
+  {
+    "request": "talk",
+    "display_name": "Talk with Dante",
+    "trigger": "primary"
+  },
+  { ... },
+  ...
+]
+```
+
+Where:
+- "request" is the name/identifier of the REQUEST;
+- "display_name" is the name of the action as it should be displayed to the player on the screen; and
+- "trigger" is the way the REQUEST can be triggered, being the possible values "primary", "secondary", "tertiary", "quaternary" or "passive", with different triggers meaning different buttons (for example, Q, E, R and V) except for "passive".
+If a REQUEST contains the trigger "passive", there is no button to be pressed. Instead, an Area3D from the interactable should, when the player enters it, be triggered.
+
+When triggered, the method `LevelInteractable3D.get_request(request: String)` can be called to get the REQUEST's packet ready to be sent to the server, which should use `LevelInteractable3D.request_call(request: String, player_data: String, destiny_data: String)` to call the method associated with the whole REQUEST, passing the caller's data and general world/destiny data along. `request_call()` should return a RESPONSE packet ready to be sent to the client. 
+
+A `LevelInteractable3D.response_call(...)` should be used to execute all RESPONSE methods from the interactable (subject to change according to the client's needs).

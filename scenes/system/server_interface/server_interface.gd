@@ -30,6 +30,9 @@ signal init(server_ip: String, server_port: int)
 ## Disconnects from the server. If it isn't connected, do nothing.
 signal server_disconnect
 
+## Sends a packet to the server
+signal send_packet(json_packet: String, transfer_mode: MultiplayerPeer.TransferMode)
+
 # #=-=-=-=-=-=-=-=-=-=-=-=#
 # #-= Reporting signals =-#
 # #=-=-=-=-=-=-=-=-=-=-=-=#
@@ -62,6 +65,9 @@ signal connection_failed
 ## Disconnected from the server.
 ## If this signal was emmited, you should emit init() again.
 signal server_disconnected
+
+## Received a packet from the server
+signal received_packet(json_packet: String)
 @warning_ignore_restore("unused_signal")
 
 @export var RUN_SERVER_TEST: bool = true

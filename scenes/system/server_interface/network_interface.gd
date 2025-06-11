@@ -9,6 +9,7 @@ var _peer: ENetMultiplayerPeer
 
 func _ready():
 	ServerInterface.init.connect(_interface_init)
+	ServerInterface.send_packet.connect(_send_packet)
 	ServerInterface.server_disconnect.connect(_disconnect)
 	multiplayer.connected_to_server.connect(_on_connected_to_server)
 	multiplayer.connection_failed.connect(_on_connection_failed)
@@ -53,6 +54,7 @@ func _on_receive_packet(_id: int, net_packet: PackedByteArray) -> void:
 	_log("Received packet!")
 	var json_packet: String = net_packet.get_string_from_utf8()
 	_log("Packet: %s" % json_packet)
+	ServerInterface.received_packet.emit(json_packet)
 
 func _on_connected_to_server() -> void:
 	_log("Successfully connected to the server!")

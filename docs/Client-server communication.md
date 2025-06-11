@@ -8,7 +8,7 @@ Before we start, consider a _packet_ a JSON string sent over the network with th
 There are 5 types of packets defined, being 2 used by the client and 3 by the server.
 1. VARIANCE packet: used by the client to send the user's actions. Mainly used for movement.
 2. REQUEST packet: used by the client to request something from a level object, like hurting, opening doors, giving items, talking to NPCs, responding to dialogs. It's basically calling a function from a level object.
-3. TICK packet: used by the server to send what changed on the game relevant to a specific client. Mainly used for updating positions and updating level objects.
+3. TICK packet: used by the server to send what changed on the game relevant to a specific client. Mainly used for updating positions and level objects.
 4. RESPONSE packet: used by the server to respond to a REQUEST. Varies based on the REQUEST. It's basically calling a function from a level object.
 5. SYNC packet: used by the server to set the game state on a client. Mainly used for switching/updating levels.
 
@@ -47,7 +47,7 @@ Example packet:
 - `"id": String (optional)` - Can be specified to help the client define which RESPONSE is for which REQUEST, as it will be copied in the RESPONSE packet (see RESPONSE."id").
 - `"object_id": String` - Specifies on which level object the request method is defined. It's copied in the RESPONSE packet to help identification (see RESPONSE."object_id").
 - `"request": String` - Specifies the request method's name.
-- `"parameters": Object` - Contains the parameters required by the request. If none are required, this should be `{}`.
+- ~~`"parameters": Object` - Contains the parameters required by the request. If none are required, this should be `{}`.
 
 When sent, the client should expect a RESPONSE corresponding to this REQUEST.
 
@@ -58,14 +58,14 @@ Example packet:
   "id": "i think this identifier is pretty unique, isn't it?",
   "object_id": "dante",
   "request": "talking_response",
-  "parameters": {
-	"option_index": 2
-  }
 }
 ```
 
 #### TICK packet specification
 - `"type": String` - Always set to "TICK".
+- `"health": Object (optional)` - Contains the player's old and new health level.
+- `"stamina": Object (optional)` - Contains the player's old and new stamina level.
+- `"fear": Object (optional)` - Contains the player's old and new fear level.
 - `"player_positions": Object` - Contains the positions of all players inside the player's level, including of themselves, being the keys the players' names and the values their positions.
 - `"entity_positions": Object` - Contains the positions of all movable entities inside the player's level, being the keys the entities' object ids and the values their positions.
 - `"level_calls": Object` - Contains calls to methods in the level's global scope. The keys specify the method to be called, and the values are the parameters, needing to be passed exactly as they are.
@@ -74,6 +74,21 @@ Example packet:
 ```
 {
   "type": "TICK",
+
+  "health": {
+    "old": 100.0,
+    "new": 97.5
+  },
+
+  "stamina": {
+    "old": 43.5,
+    "new": 43.0
+  },
+
+  "fear": {
+    "old": 54.0,
+    "new": 53.0
+  }
   
   "player_positions": {
 	"lmnss": [ 123.65, 98.07 ],
@@ -167,3 +182,10 @@ Example packet:
   }
 }
 ```
+
+Game joining sequence
+=====================
+
+Before everything, ensure a server exists, either by spawning it or being on the same network as someone who did. From here, we are assuming it exists and is accessible via LAN.
+
+For the game to start, the game must be created and
