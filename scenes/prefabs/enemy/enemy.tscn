@@ -1,12 +1,18 @@
-[gd_scene load_steps=10 format=3 uid="uid://b3f2py1p8hsoq"]
+[gd_scene load_steps=16 format=3 uid="uid://b3f2py1p8hsoq"]
 
 [ext_resource type="Script" uid="uid://0ajb47qix1b8" path="res://scenes/prefabs/enemy/enemy.gd" id="1_ruule"]
 [ext_resource type="Texture2D" uid="uid://b7ocbjjwxh7ox" path="res://assets/png/NpcCriancaOtaria.png" id="2_rmfmi"]
 [ext_resource type="Texture2D" uid="uid://cybwkn5ymsd2e" path="res://assets/png/NpcDonaBernadette.png" id="3_7c6qq"]
+[ext_resource type="Texture2D" uid="uid://dx5d5qjjke6l" path="res://assets/png/Untitled_Artwork-5 4.png" id="3_ixtl4"]
 [ext_resource type="Texture2D" uid="uid://ct46w4lj0tgkf" path="res://assets/png/NpcGilberto.png" id="4_5sgei"]
+[ext_resource type="Texture2D" uid="uid://78omfk3sfsb1" path="res://assets/png/Untitled_Artwork-2 4.png" id="5_jtg5x"]
 [ext_resource type="Texture2D" uid="uid://cnn6on31x24xb" path="res://assets/png/NpcLucian.png" id="5_poa7y"]
 [ext_resource type="Texture2D" uid="uid://cgm141bkcu7sa" path="res://assets/png/NpcMikhail.png" id="6_ievsn"]
 [ext_resource type="Texture2D" uid="uid://css2difui1kdy" path="res://assets/png/NpcYuu.png" id="7_4s1fy"]
+[ext_resource type="Texture2D" uid="uid://clh7ag0x6xnnw" path="res://assets/png/Untitled_Artwork-3 4.png" id="7_oxy3f"]
+[ext_resource type="Texture2D" uid="uid://c2w7er6115k3f" path="res://assets/png/Untitled_Artwork-6 4.png" id="9_ac4rm"]
+[ext_resource type="Texture2D" uid="uid://cxj71dppbpojm" path="res://assets/png/Untitled_Artwork-4 4.png" id="11_aclst"]
+[ext_resource type="Texture2D" uid="uid://b7s6opbv5nk3x" path="res://assets/png/Untitled_Artwork-1 4.png" id="13_k4usp"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_buwm2"]
 
@@ -22,10 +28,26 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("3_ixtl4")
+}],
+"loop": true,
+"name": &"crianca_otaria_outline",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("3_7c6qq")
 }],
 "loop": true,
 "name": &"dona_bernadette",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_jtg5x")
+}],
+"loop": true,
+"name": &"dona_bernadette_outline",
 "speed": 5.0
 }, {
 "frames": [{
@@ -38,10 +60,26 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("7_oxy3f")
+}],
+"loop": true,
+"name": &"gilberto_outline",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("5_poa7y")
 }],
 "loop": true,
 "name": &"lucian",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_ac4rm")
+}],
+"loop": true,
+"name": &"lucian_outline",
 "speed": 5.0
 }, {
 "frames": [{
@@ -54,10 +92,26 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("11_aclst")
+}],
+"loop": true,
+"name": &"mikhail_outline",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("7_4s1fy")
 }],
 "loop": true,
 "name": &"yuu",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_k4usp")
+}],
+"loop": true,
+"name": &"yuu_outline",
 "speed": 5.0
 }]
 
@@ -75,5 +129,5 @@ transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 1.1653, 0)
 billboard = 1
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_luex8")
-animation = &"yuu"
+animation = &"crianca_otaria"
 autoplay = "dona_bernadette"

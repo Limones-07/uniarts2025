@@ -5,6 +5,7 @@ extends CharacterBody3D
 @onready var player : CharacterBody3D = get_tree().get_first_node_in_group("Player")
 @onready var sprite = $AnimatedSprite3D
 var character
+var outline = false
 var character_sprites
 const characters = ["crianca_otaria", "dona_bernadette", "lucian", "mikhail", "yuu", "gilberto"]
 var dead = false
@@ -32,6 +33,13 @@ func _physics_process(_delta: float) -> void:
 	
 	velocity = dir * SPEED
 	move_and_slide()
+	
+	if not outline:
+		$AnimatedSprite3D.play(character)
+	else:
+		$AnimatedSprite3D.play(character + "_outline")
+	
+	outline = false
 	
 	if position.x < -29.0 or position.x > 29.0 or position.z < -29.0 or position.z > 29.0:
 		kill()

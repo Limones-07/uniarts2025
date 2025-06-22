@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dfdb6woruyll1"]
+[gd_scene load_steps=21 format=3 uid="uid://dfdb6woruyll1"]
 
 [ext_resource type="Script" uid="uid://dse4m2cropdiu" path="res://scenes/prefabs/player/player.gd" id="1_dvj0w"]
 [ext_resource type="Texture2D" uid="uid://c6hct743doa08" path="res://assets/png/Untitled_Artwork-1.png" id="3_uukly"]
@@ -11,6 +11,13 @@
 [ext_resource type="Texture2D" uid="uid://c6cbx1fp3ld2p" path="res://assets/png/Untitled_Artwork-8.png" id="10_2wxvc"]
 [ext_resource type="Texture2D" uid="uid://c8wxtofwq1yxh" path="res://assets/png/Untitled_Artwork-9.png" id="11_rpfui"]
 [ext_resource type="Texture2D" uid="uid://bsk5dg1nyx2de" path="res://assets/png/Untitled_Artwork-10.png" id="12_1jkk8"]
+[ext_resource type="Theme" uid="uid://bxnm53adebjn8" path="res://assets/engine/new_theme.tres" id="12_d2wla"]
+[ext_resource type="Texture2D" uid="uid://co1whk76nx1cd" path="res://assets/png/Untitled_Artwork-14.png" id="12_uukly"]
+[ext_resource type="Texture2D" uid="uid://ck0w4itblqafm" path="res://assets/png/Untitled_Artwork-1 6.png" id="14_r8dyk"]
+[ext_resource type="Texture2D" uid="uid://br6ixr3yadc2b" path="res://assets/png/Untitled_Artwork-2 6.png" id="15_lqpcr"]
+[ext_resource type="Texture2D" uid="uid://c2dk5wwycvlax" path="res://assets/png/Untitled_Artwork-3 6.png" id="16_awash"]
+[ext_resource type="Texture2D" uid="uid://bs0h86y8qr0dx" path="res://assets/png/Sprite-0001.png" id="17_awash"]
+[ext_resource type="Texture2D" uid="uid://b8g7qkaieiyso" path="res://assets/png/Sprite-0002.png" id="18_2wxvc"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_t8d8u"]
 radius = 0.369192
@@ -105,26 +112,6 @@ offset_bottom = 3.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="GUI"]
-layout_mode = 1
-offset_left = 42.0
-offset_top = 24.0
-offset_right = 97.0
-offset_bottom = 47.0
-text = "Target:"
-
-[node name="Label3" type="Label" parent="GUI"]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 57.0
-offset_top = -76.0
-offset_right = 112.0
-offset_bottom = -53.0
-grow_vertical = 0
-text = "Timer:"
-
 [node name="Label2" type="Label" parent="GUI"]
 layout_mode = 1
 anchors_preset = 1
@@ -135,11 +122,123 @@ offset_top = 32.0
 offset_right = -43.0
 offset_bottom = 55.0
 grow_horizontal = 0
-text = "Points: XX"
+theme = ExtResource("12_d2wla")
+text = "Pontos: __"
+
+[node name="Label4" type="Label" parent="GUI"]
+visible = false
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -195.0
+offset_top = 80.0
+offset_right = -43.0
+offset_bottom = 125.0
+grow_horizontal = 0
+theme = ExtResource("12_d2wla")
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+text = "+1"
+horizontal_alignment = 2
+
+[node name="Label5" type="Label" parent="GUI"]
+visible = false
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -195.0
+offset_top = 80.0
+offset_right = -43.0
+offset_bottom = 125.0
+grow_horizontal = 0
+theme = ExtResource("12_d2wla")
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+text = "-1"
+horizontal_alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="GUI"]
+texture_filter = 1
+layout_mode = 0
+offset_left = -15.0
+offset_top = 16.0
+offset_right = 199.0
+offset_bottom = 230.0
+texture = ExtResource("12_uukly")
+expand_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="GUI"]
+visible = false
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -126.0
+offset_top = 83.0
+offset_right = -86.0
+offset_bottom = 123.0
+grow_horizontal = 0
+texture = ExtResource("14_r8dyk")
+
+[node name="TextureRect3" type="TextureRect" parent="GUI"]
+visible = false
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -126.0
+offset_top = 83.0
+offset_right = -86.0
+offset_bottom = 123.0
+grow_horizontal = 0
+texture = ExtResource("15_lqpcr")
+
+[node name="TextureRect4" type="TextureRect" parent="GUI"]
+visible = false
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -126.0
+offset_top = 83.0
+offset_right = -86.0
+offset_bottom = 123.0
+grow_horizontal = 0
+texture = ExtResource("16_awash")
+
+[node name="Timer" type="Timer" parent="GUI"]
+wait_time = 0.5
+one_shot = true
+
+[node name="Sprite-0001" type="Sprite2D" parent="GUI"]
+texture_filter = 1
+position = Vector2(114, 548)
+scale = Vector2(2.1875, 2.1875)
+texture = ExtResource("18_2wxvc")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="GUI/Sprite-0001"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -32.0
+offset_right = -32.0
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 1.0
+step = 0.0
+allow_lesser = true
+fill_mode = 4
+texture_progress = ExtResource("17_awash")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 30.0
+wait_time = 60.0
 one_shot = true
 autostart = true
 
+[connection signal="timeout" from="GUI/Timer" to="." method="_on_point_timer_timeout"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
