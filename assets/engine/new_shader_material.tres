@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://3os1el6lecg3"]
+
+[ext_resource type="Shader" uid="uid://ba8e3n56c1i6f" path="res://scenes/prefabs/enemy/enemy.gdshader" id="1_nxogg"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_nxogg")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/glowSize = 15.0
+shader_parameter/glowDensity = 3
+shader_parameter/glowRadialCoverage = 4
+shader_parameter/glowAngle = 1.57
+shader_parameter/glowSharpness = 1.0
+shader_parameter/alphaThreshold = 0.2

@@ -1,95 +1,63 @@
-[gd_scene load_steps=15 format=3 uid="uid://b3f2py1p8hsoq"]
+[gd_scene load_steps=10 format=3 uid="uid://b3f2py1p8hsoq"]
 
-[ext_resource type="Texture2D" uid="uid://c5genqbpswf3g" path="res://assets/png/monster_sprites.png" id="1_jvnwp"]
 [ext_resource type="Script" uid="uid://0ajb47qix1b8" path="res://scenes/prefabs/enemy/enemy.gd" id="1_ruule"]
+[ext_resource type="Texture2D" uid="uid://b7ocbjjwxh7ox" path="res://assets/png/NpcCriancaOtaria.png" id="2_rmfmi"]
+[ext_resource type="Texture2D" uid="uid://cybwkn5ymsd2e" path="res://assets/png/NpcDonaBernadette.png" id="3_7c6qq"]
+[ext_resource type="Texture2D" uid="uid://ct46w4lj0tgkf" path="res://assets/png/NpcGilberto.png" id="4_5sgei"]
+[ext_resource type="Texture2D" uid="uid://cnn6on31x24xb" path="res://assets/png/NpcLucian.png" id="5_poa7y"]
+[ext_resource type="Texture2D" uid="uid://cgm141bkcu7sa" path="res://assets/png/NpcMikhail.png" id="6_ievsn"]
+[ext_resource type="Texture2D" uid="uid://css2difui1kdy" path="res://assets/png/NpcYuu.png" id="7_4s1fy"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_buwm2"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_14kir"]
-atlas = ExtResource("1_jvnwp")
-region = Rect2(0, 256, 256, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_85kil"]
-atlas = ExtResource("1_jvnwp")
-region = Rect2(256, 256, 256, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_k2myn"]
-atlas = ExtResource("1_jvnwp")
-region = Rect2(512, 256, 256, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_b7rda"]
-atlas = ExtResource("1_jvnwp")
-region = Rect2(768, 256, 256, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_byj64"]
-atlas = ExtResource("1_jvnwp")
-region = Rect2(1024, 256, 256, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_y1yn8"]
-atlas = ExtResource("1_jvnwp")
-region = Rect2(0, 0, 256, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7u6dh"]
-atlas = ExtResource("1_jvnwp")
-region = Rect2(0, 0, 256, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_c7oq3"]
-atlas = ExtResource("1_jvnwp")
-region = Rect2(256, 0, 256, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sap27"]
-atlas = ExtResource("1_jvnwp")
-region = Rect2(512, 0, 256, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_f2s0s"]
-atlas = ExtResource("1_jvnwp")
-region = Rect2(768, 0, 256, 256)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_luex8"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_14kir")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_85kil")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_k2myn")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_b7rda")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_byj64")
+"texture": ExtResource("2_rmfmi")
 }],
-"loop": false,
-"name": &"die",
+"loop": true,
+"name": &"crianca_otaria",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_y1yn8")
+"texture": ExtResource("3_7c6qq")
 }],
 "loop": true,
-"name": &"idle",
+"name": &"dona_bernadette",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7u6dh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_c7oq3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sap27")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_f2s0s")
+"texture": ExtResource("4_5sgei")
 }],
 "loop": true,
-"name": &"walk",
+"name": &"gilberto",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_poa7y")
+}],
+"loop": true,
+"name": &"lucian",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_ievsn")
+}],
+"loop": true,
+"name": &"mikhail",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_4s1fy")
+}],
+"loop": true,
+"name": &"yuu",
 "speed": 5.0
 }]
 
@@ -103,9 +71,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_buwm2")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 1, 0)
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 1.1653, 0)
 billboard = 1
+texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_luex8")
-animation = &"idle"
-autoplay = "idle"
-frame_progress = 0.835252
+animation = &"yuu"
+autoplay = "dona_bernadette"

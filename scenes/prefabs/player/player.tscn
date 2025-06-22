@@ -69,7 +69,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.769519, 0)
 shape = SubResource("CapsuleShape3D_t8d8u")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.930117, 0.367264, 0, -0.367264, 0.930117, 0, 3.66361, 5.27803)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
 current = true
 
 [node name="AnimatedSprite3D2" type="AnimatedSprite3D" parent="."]
@@ -77,3 +77,69 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0.878657, 0)
 billboard = 1
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_onub3")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.007, 1.1, 0.001)
+target_position = Vector3(0, 0, -2)
+collision_mask = 3
+
+[node name="GUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Crosshair" type="ColorRect" parent="GUI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -3.0
+offset_top = -3.0
+offset_right = 3.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="GUI"]
+layout_mode = 1
+offset_left = 42.0
+offset_top = 24.0
+offset_right = 97.0
+offset_bottom = 47.0
+text = "Target:"
+
+[node name="Label3" type="Label" parent="GUI"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 57.0
+offset_top = -76.0
+offset_right = 112.0
+offset_bottom = -53.0
+grow_vertical = 0
+text = "Timer:"
+
+[node name="Label2" type="Label" parent="GUI"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -120.0
+offset_top = 32.0
+offset_right = -43.0
+offset_bottom = 55.0
+grow_horizontal = 0
+text = "Points: XX"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 30.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
