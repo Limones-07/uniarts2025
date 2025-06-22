@@ -10,11 +10,12 @@ config_version=5
 
 [application]
 
-config/name="uniarts2025"
-run/main_scene="res://scenes/environments/main.tscn"
+config/name="Prova da Corrida"
+run/main_scene="uid://2kbbongpgakm"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 boot_splash/bg_color=Color(0.133333, 0.12549, 0.203922, 1)
-config/icon="res://icon.svg"
+config/icon="uid://cy7eituiqavxt"
+config/windows_native_icon="res://assets/png/icon.ico"
 
 [autoload]
 
@@ -23,7 +24,7 @@ Global="*res://src/global.gd"
 
 [display]
 
-window/stretch/mode="canvas_items"
+window/stretch/mode="viewport"
 
 [global_group]
 
@@ -81,4 +82,4 @@ restart={
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
-environment/defaults/default_clear_color=Color(0.133333, 0.12549, 0.203922, 1)
+environment/defaults/default_clear_color=Color(0.297415, 0.695243, 0.511602, 1)

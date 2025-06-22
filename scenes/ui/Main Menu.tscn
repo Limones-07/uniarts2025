@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://2kbbongpgakm"]
+[gd_scene load_steps=6 format=3 uid="uid://2kbbongpgakm"]
 
 [ext_resource type="FontFile" uid="uid://doedntugj2cb8" path="res://assets/ttf/Barrio-Regular.ttf" id="1_p8ecq"]
-[ext_resource type="Texture2D" uid="uid://40dy5fh0twmt" path="res://assets/jpg/placeholder.jpg" id="2_d1pup"]
+[ext_resource type="Script" uid="uid://nvyvf5bpbw3x" path="res://src/main_menu.gd" id="1_wyhiu"]
 [ext_resource type="Theme" uid="uid://coisw4631bd4b" path="res://assets/engine/button_theme.tres" id="2_wyhiu"]
+[ext_resource type="Texture2D" uid="uid://dbwl4uubtdr7t" path="res://assets/png/Untitled_Artwork-26.png" id="4_wajxv"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_wyhiu"]
 font = ExtResource("1_p8ecq")
@@ -15,6 +16,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_wyhiu")
 
 [node name="HSplitContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -32,8 +34,7 @@ alignment = 1
 
 [node name="Label" type="Label" parent="HSplitContainer/VBoxContainer"]
 layout_mode = 2
-text = "Cidade Das 
-Sombras"
+text = "prova da corrida"
 label_settings = SubResource("LabelSettings_wyhiu")
 horizontal_alignment = 1
 
@@ -43,29 +44,16 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = ExtResource("2_wyhiu")
-text = "Singleplayer"
-
-[node name="Button2" type="Button" parent="HSplitContainer/VBoxContainer"]
-custom_minimum_size = Vector2(300, 35)
-layout_mode = 2
-size_flags_horizontal = 4
-theme = ExtResource("2_wyhiu")
-text = "Multiplayer"
-
-[node name="Button3" type="Button" parent="HSplitContainer/VBoxContainer"]
-custom_minimum_size = Vector2(300, 35)
-layout_mode = 2
-size_flags_horizontal = 4
-theme = ExtResource("2_wyhiu")
-text = "Configurações"
+text = "jogar"
 
 [node name="Container" type="CenterContainer" parent="HSplitContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="TextureRect" type="TextureRect" parent="HSplitContainer/Container"]
-custom_minimum_size = Vector2(500, 377)
-layout_mode = 2
-texture = ExtResource("2_d1pup")
-expand_mode = 2
-stretch_mode = 4
+[node name="UntitledArtwork-26" type="Sprite2D" parent="HSplitContainer/Container"]
+texture_filter = 1
+position = Vector2(254, 436)
+scale = Vector2(10.6563, 10.6563)
+texture = ExtResource("4_wajxv")
+
+[connection signal="pressed" from="HSplitContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

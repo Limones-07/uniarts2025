@@ -1,0 +1,63 @@
+[gd_scene load_steps=7 format=3 uid="uid://knuh2ann2mhe"]
+
+[ext_resource type="Script" uid="uid://nvyvf5bpbw3x" path="res://src/main_menu.gd" id="1_jf711"]
+[ext_resource type="FontFile" uid="uid://doedntugj2cb8" path="res://assets/ttf/Barrio-Regular.ttf" id="2_lgwbw"]
+[ext_resource type="Theme" uid="uid://coisw4631bd4b" path="res://assets/engine/button_theme.tres" id="3_1krol"]
+[ext_resource type="FontFile" uid="uid://dsw3agdjoirvx" path="res://assets/ttf/MajorMonoDisplay-Regular.ttf" id="4_jf711"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_wyhiu"]
+font = ExtResource("2_lgwbw")
+font_size = 60
+
+[sub_resource type="LabelSettings" id="LabelSettings_lgwbw"]
+font = ExtResource("4_jf711")
+font_size = 23
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jf711")
+
+[node name="HSplitContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Label" type="Label" parent="HSplitContainer/VBoxContainer"]
+layout_mode = 2
+text = "O intervalo tocou!"
+label_settings = SubResource("LabelSettings_wyhiu")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="HSplitContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_1krol")
+theme_override_font_sizes/font_size = 1
+text = "mas todos os professores ainda têm provas para entregar! Você ficou encarregado de entregar as provas para eles enquanto eles vão para as salas. Voce tem um minuto para entregar o máximo de provas que você conseguir. clique com o botão direito quando estiver próximo do professor para entregar a prova a ele. mas cuidado, se você entregar uma prova para o professor errado, será uma prova a menos que será entregue. use wasd para se mover e o mouse para olhar. boa sorte!"
+label_settings = SubResource("LabelSettings_lgwbw")
+horizontal_alignment = 1
+autowrap_mode = 3
+justification_flags = 160
+
+[node name="Button" type="Button" parent="HSplitContainer/VBoxContainer"]
+custom_minimum_size = Vector2(300, 35)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("3_1krol")
+text = "continuar"
+
+[connection signal="pressed" from="HSplitContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

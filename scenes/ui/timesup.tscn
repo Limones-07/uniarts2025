@@ -1,6 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://elilyf264ge3"]
+[gd_scene load_steps=7 format=3 uid="uid://elilyf264ge3"]
 
 [ext_resource type="Script" uid="uid://mmjeikeasr0g" path="res://scenes/ui/timesup.gd" id="1_q4mo5"]
+[ext_resource type="FontFile" uid="uid://doedntugj2cb8" path="res://assets/ttf/Barrio-Regular.ttf" id="2_h7og4"]
+[ext_resource type="FontFile" uid="uid://dsw3agdjoirvx" path="res://assets/ttf/MajorMonoDisplay-Regular.ttf" id="3_eyfe1"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_gpcmg"]
+font = ExtResource("2_h7og4")
+font_size = 128
+
+[sub_resource type="LabelSettings" id="LabelSettings_y2aqt"]
+font = ExtResource("3_eyfe1")
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_hutht"]
+font = ExtResource("3_eyfe1")
+font_size = 32
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -30,13 +44,16 @@ alignment = 1
 layout_mode = 2
 size_flags_horizontal = 4
 text = "ACABOU O TEMPO!"
+label_settings = SubResource("LabelSettings_gpcmg")
 
 [node name="Label2" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-text = "Pontos: XX"
+text = "pontos: XX"
+label_settings = SubResource("LabelSettings_y2aqt")
 
 [node name="Label3" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-text = "Aperte R para recomeçar"
+text = "Aperte r para recomeçar"
+label_settings = SubResource("LabelSettings_hutht")
